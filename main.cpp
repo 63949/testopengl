@@ -1,6 +1,6 @@
 #include <GL/glut.h>
 #include <math.h>
-const int n=20;
+const int n=3;
 const GLfloat R = 0.5f;
 const GLfloat Pi = 3.1415926536f;
 
@@ -30,7 +30,9 @@ void display()
 {
     int i;
     glClear(GL_COLOR_BUFFER_BIT);
-    glBegin(GL_POLYGON);
+//    glBegin(GL_POINTS);
+ //   glBegin(GL_POLYGON);
+    glBegin(GL_LINE_LOOP);
     for(i=0;i<n;i++)
     {
         glVertex2f(R*cos(2*Pi/n*i),R*sin(2*Pi/n*i));
