@@ -1,7 +1,5 @@
 #include <GL/glut.h>
 #include <math.h>
-const int n=3;
-const GLfloat R = 0.5f;
 const GLfloat Pi = 3.1415926536f;
 
 void init();
@@ -29,14 +27,15 @@ void init()
 void display()
 {
     int i;
+    //glShadeModel(GL_FLAT);
     glClear(GL_COLOR_BUFFER_BIT);
-//    glBegin(GL_POINTS);
- //   glBegin(GL_POLYGON);
-    glBegin(GL_LINE_LOOP);
-    for(i=0;i<n;i++)
+    glBegin(GL_TRIANGLE_FAN);
+    glColor3f(1.0f,1.0f,1.0f);
+    glVertex2f(0.0f,0.0f);
+    for(i=0;i<8;++i)
     {
-        glVertex2f(R*cos(2*Pi/n*i),R*sin(2*Pi/n*i));
-
+        glColor3f(i&0x04,i&0x02,i&0x01);
+        glVertex2f(cos(i*Pi/4),sin(i*Pi/4));
     }
     glEnd();
     glFlush();
