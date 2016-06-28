@@ -1,0 +1,50 @@
+1.配置好了Ubuntu下的c++环境，gcc以及g++可用。
+2.使用eclipse for c+做OpenGL开发
+　　步骤一：
+在ubuntu终端下运行以下命令，安装opengl所需要的库文件
+$ sudo apt-get install build-essential
+$ sudo apt-get install freeglut3-dev
+　　步骤二：
+　　运行一下opengl实例，测试配置的环境是否安装成功
+在eclipse下新建一个工程文件，假设我们命名为Test，在工程Test里面新建一个C++源代码文件，这里我们把它命名为main.cpp，在main.cpp文件中打入一下代码
+#include <GL/glut.h>
+　　void init();
+void display();
+　　int main(int argc, char* argv[])
+{
+glutInit(&argc, argv);
+glutInitDisplayMode(GLUT_RGB |GLUT_SINGLE);
+glutInitWindowPosition(0, 0);
+glutInitWindowSize(300, 300);
+　　glutCreateWindow("OpenGL 3D View");
+　　init();
+glutDisplayFunc(display);
+　　glutMainLoop();
+return 0;
+}
+　　void init()
+{
+glClearColor(0.0, 0.0, 0.0, 0.0);
+glMatrixMode(GL_PROJECTION);
+glOrtho(-5, 5, -5, 5, 5, 15);
+glMatrixMode(GL_MODELVIEW);
+gluLookAt(0, 0, 10, 0, 0, 0, 0, 1, 0);
+}
+　　void display()
+{
+glClear(GL_COLOR_BUFFER_BIT);
+　　glColor3f(1.0, 0, 0);
+glutWireTeapot(3);
+　　glFlush();
+}
+右击工程文件名
+Test->点击属性（Properties）->C/C++Bulid->Settings->GCC C++Linker->Libraries,
+在这个窗口中添加几个个库，
+分别为GLU,glut,GL，
+点击OK。
+如果还想使用opencv，
+在这里还加入cv,cxcore,highgui等库文件，
+根据自己的需要来定
+同时在GCC C＋＋ Compiler->Includes下的incudepath中添加路径/usr/include/GL
+如果还想使用opencv中的库，那么加入opencv的路径，一般是/usr/include/opencv
+　　运行以上程序，会显示一个茶壶形状的opengl运行结果

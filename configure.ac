@@ -19,5 +19,6 @@ AC_PROG_CXX
 
 # Checks for library functions.
 
+#fix: automake: no `Makefile.am' found for any configure output
 AC_CONFIG_FILES([Makefile]) 
 AC_OUTPUT
