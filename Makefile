@@ -259,6 +259,7 @@ top_srcdir = .
 main_SOURCES = main.cpp
 INCLUDES = -I/usr/include -I.
 AM_CPPFLAGS = -g
+#/usr/bin/ld: main.o: undefined reference to symbol 'glOrtho'
 main_LDADD = -L/usr/lib -lglut -lGLU -lGL
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am

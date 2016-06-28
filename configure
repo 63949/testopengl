@@ -3104,6 +3104,7 @@ fi
 
 # Checks for library functions.
 
+#fix: automake: no `Makefile.am' found for any configure output
 ac_config_files="$ac_config_files Makefile"
 
 cat >confcache <<\_ACEOF
